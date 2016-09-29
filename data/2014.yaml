@@ -1,0 +1,96 @@
+budget:
+    name: Total Managed Expenditure
+    year: 2015
+    is_in_real_terms: false
+footnotes:
+    - &footnote_1 The main pension schemes are reported under IAS19 accounting requirements, the reconciliation to National Accounts is explained in Annex D. In the 2010 Budget Statement it was announced that the Government would use the CPI rather than the RPI for the indexation of public service pensions. This change has been recognised as a negative past service cost in 2010-11 in accordance with IAS19.
+    - &footnote_2 Personal Social Services (Health) are grants previously paid by the Department of Health that are now included in CLG Local Government's budget.
+    - &footnote_3 Following implementation of ESA10, Network Rail is now classified to Central Government. Consequently Total Managed Expenditure (TME) includes Network Rail spending in all years shown. However, the actual expenditure of Network Rail only appears in the Department for Transport budget from 2015-16. In 2014-15 the Government put in place a loan arrangement in advance of Network Rail's formal reclassification to the Public Sector in September 2014. This is included in Capital departmental AME as lending to the private sector.
+    - &footnote_4 Transactions from 2010-11 onwards have been affected by financial sector interventions.
+    - &footnote_5 Total departmental expenditure is given by Resource DEL excluding depreciation plus capital DEL plus resource and capital departmental AME.
+    - &footnote_6 Departmental budgets include amounts carried forward through Budget Exchange. These increases will be offset by any deposits at Supplementary Estimates in future years so are excluded from spending totals.
+    - &footnote_7 Total other expenditure is other AME spend within total managed expenditure.
+    - &footnote_8 This excludes the temporary effects of banks being classified to the public sector.
+categories:
+    mega_pounds: 735533
+    description: *footnote_8
+    Departmental:
+        mega_pounds: 620587
+        description: *footnote_5
+        Education:
+            mega_pounds: 70907
+            description: *footnote_1
+        NHS (Health):
+            mega_pounds: 135535
+            description: *footnote_1
+        Personal Social Services (Health):
+            mega_pounds: 0
+            description: *footnote_2
+        Transport:
+            mega_pounds: 19086
+            description: *footnote_3
+        Communities:
+            mega_pounds: 7280
+        Local Government:
+            mega_pounds: 25837
+        Business, Innovation and Skills:
+            mega_pounds: 24652
+        Home Office:
+            mega_pounds: 13487
+        Justice:
+            mega_pounds: 7439
+        Law Officers' Departments:
+            mega_pounds: 564
+        Defence:
+            mega_pounds: 42729
+            description: *footnote_1
+        Foreign and Commonwealth Office:
+            mega_pounds: 1951
+        International Development:
+            mega_pounds: 9806
+        Energy and Climate Change:
+            mega_pounds: 9285
+        Environment, Food and Rural Affairs:
+            mega_pounds: 2426
+        Culture, Media and Sport:
+            mega_pounds: 7061
+        Work and Pensions:
+            mega_pounds: 174740
+        Scotland:
+            mega_pounds: 33081
+        Wales:
+            mega_pounds: 15662
+        Northern Ireland:
+            mega_pounds: 19553
+        Chancellor's Departments:
+            mega_pounds: -15484
+            description: *footnote_4
+        Cabinet Office:
+            mega_pounds: 13449
+            description: *footnote_1
+        Small and Independent Bodies:
+            mega_pounds: 1541
+    Non-departmental:
+        mega_pounds: 114946
+        description: *footnote_7
+        Central government gross debt interest:
+            mega_pounds: 45422
+        Locally financed expenditure:
+            mega_pounds: 34239
+        Public sector depreciation:
+            mega_pounds: 36034
+        Net expenditure transfers to the EU:
+            mega_pounds: 8881
+        Public corporations' own-financed capital expenditure:
+            mega_pounds: 8506
+        Accounting adjustments:
+            mega_pounds: -18136
+        Reserve:
+            mega_pounds: 0
+        Special Reserve:
+            mega_pounds: 0
+        OBR allowance for shortfall:
+            mega_pounds: 0
+        Adjustment for Budget Exchange:
+            mega_pounds: 0
+            description: *footnote_6

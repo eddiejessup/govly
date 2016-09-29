@@ -1,0 +1,115 @@
+-
+    name: Stratton Oakmont
+    quantifications:
+        -
+            quantifiable: money_in
+            unit: mega_pounds
+            number: 100
+            year: 1985
+            breakdowns:
+                -
+                    attribute: victim
+                    categories:
+                        f: 1.0
+                        Little old ladies:
+                            f: 0.5
+                            Really little old ladies:
+                                f: 0.3
+                            Really old, little ladies:
+                                f: 0.1
+                            Really little, really old ladies:
+                                f: 0.1
+                        Balding old men:
+                            f: 0.4
+                        Confused immigrants:
+                            f: 0.1
+                -
+                    attribute: gender
+                    categories:
+                        f: 1.0
+                        Men:
+                            f: 0.45
+                        Women:
+                            f: 0.55
+        -
+            quantifiable: money_out
+            unit: mega_pounds
+            number: 100
+            year: 1985
+            breakdowns:
+                -
+                    attribute: vice
+                    categories:
+                        f: 1.0
+                        Hookers:
+                            f: 0.3
+                        Booze:
+                            f: 0.2
+                        Lions:
+                            f: 0.5
+                        Dwarfs:
+                            f: 0.0
+                -
+                    attribute: animation
+                    categories:
+                        f: 1.0
+                        Animate:
+                            f: 0.8
+                        Inanimate:
+                            f: 0.2
+        -
+            quantifiable: money_in
+            unit: mega_pounds
+            number: 100
+            year: 1984
+            breakdowns:
+                -
+                    attribute: victim
+                    categories:
+                        f: 1.0
+                        Little old ladies:
+                            f: 0.5
+                            Really little, old ladies:
+                                f: 0.3
+                            Really old, little ladies:
+                                f: 0.1
+                            Really little, really old ladies:
+                                f: 0.1
+                        Balding old men:
+                            f: 0.5
+                        Confused immigrants:
+                            f: 0.0
+                -
+                    attribute: gender
+                    categories:
+                        f: 1.0
+                        Men:
+                            f: 0.5
+                        Women:
+                            f: 0.5
+        -
+            quantifiable: money_out
+            unit: mega_pounds
+            number: 50
+            year: 1984
+            breakdowns:
+                -
+                    attribute: vice
+                    categories:
+                        f: 1.0
+                        Hookers:
+                            f: 0.2
+                        Booze:
+                            f: 0.3
+                        Lions:
+                            f: 0.1
+                        Dwarfs:
+                            f: 0.4
+                -
+                    attribute: animation
+                    categories:
+                        f: 1.0
+                        Animate:
+                            f: 0.7
+                        Inanimate:
+                            f: 0.3
