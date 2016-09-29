@@ -1,0 +1,10 @@
+<h3>{{ category }} {% if category.parent %}<a href="{% url 'category_detail' category.parent.id %}">(up)</a>{% endif %}</h3>
+{% if category.children %}
+    <ul>
+    {% for child in category.children %}
+        <li><a href="{% url 'category_detail' child.id %}">{{ child.name }}: {{ child.percentage|floatformat }}%</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No children.</p>
+{% endif %}

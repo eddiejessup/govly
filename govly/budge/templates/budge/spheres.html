@@ -1,0 +1,11 @@
+<h2>All spheres</h2>
+{% if spheres %}
+    <ul>
+    {% for sphere in spheres %}
+        <li>{{ sphere }}</li>
+        <li><a href="{% url 'sphere_quantifiables' sphere.id %}">{{ sphere }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No spheres.</p>
+{% endif %}

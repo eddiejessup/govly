@@ -1,0 +1,24 @@
+{% extends "budge/base.html" %}
+{% load static %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "budge/js/treemap-draw.js" %}"></script>
+<script>
+  var treemapDataUrl = "{% url 'treemap_data' breakdown.id %}";
+
+  timeTreemapDraw.initialize();
+  $.getJSON(treemapDataUrl(), {}, function(data, status) {timeTreemapDraw.renderInitial(data);
+  });
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="treemap-container"></div>
+
+<div id="tooltip" class="hidden">
+  <p><strong id="name"></strong></p>
+  <p><span id="quantification"></span></p>
+  <p><span id="description"></span></p>
+</div>  
+{% endblock content %}

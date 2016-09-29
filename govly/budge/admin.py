@@ -1,19 +1,39 @@
 from django.contrib import admin
+from django_mptt_admin.admin import DjangoMpttAdmin
+from .models import (Sphere, Quantification, Category, BreakdownMethod,
+                     Breakdown, Quantifiable, Unit)
 
-from .models import Budget, Category
+
+@admin.register(Quantifiable)
+class QuantifiableAdmin(admin.ModelAdmin):
+    pass
 
 
-class CategoryInline(admin.TabularInline):
-    model = Category
+@admin.register(Sphere)
+class SphereAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Unit)
+class UnitAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Quantification)
+class QuantificationAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    inlines = [
-        CategoryInline,
-    ]
+class CategoryAdmin(DjangoMpttAdmin):
+        pass
 
 
-@admin.register(Budget)
-class BudgetAdmin(admin.ModelAdmin):
+@admin.register(Breakdown)
+class BreakdownAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(BreakdownMethod)
+class BreakdownMethodAdmin(admin.ModelAdmin):
     pass

@@ -1,0 +1,17 @@
+<h2>Quantifiables for {{ sphere }}</h2>
+
+{% if quantifiables_info %}
+    <ul>
+    {% for quantifiable_info in quantifiables_info %}
+        <li>
+            <h3>{{ quantifiable_info.quantifiable }}</h3>
+            <ul>
+            {% for breakdown_method in quantifiable_info.breakdown_methods %}
+                <li><a href="{% url 'sphere_breakdowns_treemap' sphere.id quantifiable.id breakdown_method.id %}">{{ breakdown_method.attribute }}</a></li>
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No quantifiables.</p>
+{% endif %}

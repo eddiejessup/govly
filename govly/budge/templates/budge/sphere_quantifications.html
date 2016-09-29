@@ -1,0 +1,10 @@
+<h2>Quantification of {{ quantifiable }} for {{ sphere }}</h2>
+{% if quantifications %}
+    <ul>
+    {% for quantification in quantifications %}
+        <li><a href="{% url 'quantification_detail' quantification.id %}">{{ quantification }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No quantifications.</p>
+{% endif %}

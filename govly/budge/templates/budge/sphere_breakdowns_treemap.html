@@ -1,0 +1,129 @@
+{% extends "budge/base.html" %}
+{% load static %}
+
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.js" %}"></script>
+<script src="{% static "budge/js/time-treemap-draw.js" %}"></script>
+<script>
+  function findNearest(includeLeft, includeRight, value, values) {
+    var nearest = null;
+    var diff = null;
+    for (var i = 0; i < values.length; i++) {
+      if ((includeLeft && values[i] <= value) || (includeRight && values[i] >= value)) {
+        var newDiff = Math.abs(value - values[i]);
+        if (diff == null || newDiff < diff) {
+          nearest = values[i];
+          diff = newDiff;
+        }
+      }
+    }
+    return nearest;
+  }
+
+  function getRealValue(sliderValue, sliderValues, realValues) {
+    for (var i = 0; i < sliderValues.length; i++) {
+      if (sliderValues[i] >= sliderValue) {
+        return realValues[i];
+      }
+    }
+    return 0;
+  }
+
+  function getCurrentYear() {
+    return $('input[name=year]:checked', '#years').attr('year');
+  }
+
+  function getAllYears() {
+    var $inputs = $('#years').find('input')
+    var years = $inputs.map(function() {return $(this).attr('year');}).get();
+    years.sort();
+    return years;
+  }
+
+  function getBreakdownId() {
+    return $('input[name=year]:checked', '#years').attr('breakdown-id');
+  }
+
+  function getDataUrl() {
+    return $('input[name=year]:checked', '#years').attr('data-url');
+  }
+
+  function setCurrentYear(year) {
+    $('input[name=year]', '#years').prop('checked', false);
+    $('input[name=year][year=' + year + ']', '#years').prop('checked', true);
+    $(document).trigger('update');
+  }
+
+  function getTreemapData(callback) {
+    $.getJSON(getDataUrl(), {}, function(data, status) {callback(data);});
+  }
+
+  function makeSlider(sliderValues, realValues, callback) {
+    var sliderValueMin = Math.min.apply(Math, sliderValues);
+    var sliderValueMax = Math.max.apply(Math, sliderValues);
+
+    var slider = $("#slider").slider({
+      orientation: 'horizontal',
+      min: sliderValueMin,
+      max: sliderValueMax,
+      value: sliderValueMax,
+      slide: function(event, ui) {
+        var includeLeft = event.keyCode != $.ui.keyCode.RIGHT;
+        var includeRight = event.keyCode != $.ui.keyCode.LEFT;
+        var oldSliderValue = ui.value;
+        var newSliderValue = findNearest(includeLeft, includeRight, oldSliderValue, sliderValues);
+        slider.slider('value', newSliderValue);
+        var realValue = getRealValue(slider.slider('value'), sliderValues, realValues);
+        callback(realValue);
+        return false;
+      },
+    }).slider('pips', {'first': 'label', 'last': 'label', 'rest': 'label'});
+  }
+
+  $(function () {
+    var realValues = getAllYears();
+    var sliderValues = realValues;
+    makeSlider(sliderValues, realValues, setCurrentYear);
+
+    timeTreemapDraw.initialize();
+    getTreemapData(timeTreemapDraw.renderInitial);
+    $(document).on('update', function change() {
+      console.log('chabge')
+      getTreemapData(timeTreemapDraw.renderExisting);
+    });
+  });
+
+</script>
+{% endblock scripts %}
+
+
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.css" %}">
+{% endblock style %}
+
+{% block content %}
+<h1>Breakdown of {{ quantifiable }} for {{ sphere }} by {{ breakdown_method }}</h1>
+
+<div id="treemap-container"></div>
+
+<div id="tooltip" class="hidden">
+  <p><strong id="name"></strong></p>
+  <p><span id="quantification"></span></p>
+  <p><span id="description"></span></p>
+</div>
+ 
+<div id="slider"></div>
+
+<form id="years" class="hidden">
+<ul>
+{% for breakdown in breakdowns %}
+  <li><label><input type="radio" name="year" data-url={% url 'treemap_data' breakdown.id %} breakdown-id={{ breakdown.pk }} year="{{ breakdown.quantification.year }}" {% if forloop.last %}checked{% endif %}>{{ breakdown.quantification.year }}</label></li>
+{% endfor %}
+</ul>
+<p id="year-stater"></p>
+</form>
+
+{% endblock content %}
